@@ -6,28 +6,41 @@ function error(err){
     }
 }
 
-function getQuote(){
+function quoteHandler(data){
+    var authorOfQuote = '';
+    if(data.quoteAuthor === ''){
+        authorOfQuote = "Anonymous";
+    }else{
+        authorOfQuote = data.quoteAuthor;
+    }
 
-    if(window.location.protocol !== 'http:'){
+    var tweetText = '"'+data.quoteText+'" -'+authorOfQuote;
+    if(tweetText.length > 140){
+        console.log(tweetText.length);
+        getQuote();
+        return;
+    }
+
+
+
+    $(".author").html('&#8212;'+authorOfQuote)
+    $(".quote").html('"'+data.quoteText+'"');
+
+    $('.tweetQuote').attr('href','https://twitter.com/intent/tweet?text='+encodeURIComponent(tweetText));
+}
+
+function getQuote(){
+    if(window.location.protocol === 'https:'){
         error('noHTTPS');
         return;
     }
 
-    $.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=?", function(data){
-        $(".quote").html('"'+data.quoteText+'"').fail(error);
-        if(data.quoteAuthor === ''){
-            $(".author").html('&#8212;'+"Anonymous");
-        }else{
-            $(".author").html('&#8212;'+data.quoteAuthor);
-        }
-    });
+    $.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=?").done(quoteHandler).fail(error);
 }
 
 $(document).ready(function(){
-
-    $.post("https://api.twitter.com/oauth/authorize");
-
     getQuote();
+
     $('.getter').on('click',function(){
         getQuote();
     });

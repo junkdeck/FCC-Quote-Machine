@@ -5,7 +5,10 @@
         <title>Quote Machine</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script type="text/javascript" src='./script.js'></script>
+        <script type="text/javascript" async
+        src="https://platform.twitter.com/widgets.js"></script>
         <link rel="stylesheet" href="./master.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <div class="wrapper">
@@ -15,6 +18,14 @@
                 </div>
                 <div class="authorBox">
                     <span class='author'></span>
+                    <div class="tweetr">
+                        <a href="#" class='tweetQuote'>
+                            <span class='fa-stack fa-lg'>
+                                <i class='fa fa-circle fa-stack-2x'></i>
+                                <i class='fa fa-twitter fa-stack-1x fa-inverse'></i>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
             <button type="button" name="button" class='getter'>Get Quote</button>

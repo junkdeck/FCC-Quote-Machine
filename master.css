@@ -79,12 +79,12 @@ body{
     background:#c3c3c3;
     box-shadow: 0px 0px 25px 5px #47474740;
 
-    transition: 0.2s;
+    /*transition: 0.2s;*/
 }
 
 .getter:active{
     background: #b8b8b8;
-    transition: 0.1s;
+    /*transition: 0.1s;*/
 }
 
 .quote{
@@ -103,4 +103,22 @@ body{
 
     color:#111;
 
+}
+
+.tweetr{
+    width:32px;
+    height:32px;
+    float:right;
+    margin-top:-20px;
+}
+
+.tweetQuote{
+    color:#4599e6;
+    transition:0.2s;
+}
+.tweetQuote:hover{
+    color:#3085d2;
+}
+.tweetQuote:active{
+    color:#2b75b9;
 }
