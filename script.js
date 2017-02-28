@@ -21,8 +21,6 @@ function quoteHandler(data){
         return;
     }
 
-
-
     $(".author").html('&#8212;'+authorOfQuote)
     $(".quote").html('"'+data.quoteText+'"');
 
@@ -34,7 +32,6 @@ function getQuote(){
         error('noHTTPS');
         return;
     }
-
     $.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&lang=en&jsonp=?").done(quoteHandler).fail(error);
 }
 
